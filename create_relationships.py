@@ -61,21 +61,22 @@ def  populate_relationships_table():
     """
     fake = Faker()
     # Randomly select first person in relationship
-    person1_id = randint(1, 200)
-    # Randomly select second person in relationship
+    for new_relationship in range (100):
+        person1_id = randint(1, 200)
+        # Randomly select second person in relationship
     # Loop ensures person will not be in a relationship with themself
-    person2_id = randint(1, 200)
-    while person2_id == person1_id:
         person2_id = randint(1, 200)
+        while person2_id == person1_id:
+            person2_id = randint(1, 200)
     # Randomly select a relationship type
-    rel_type = choice(('friend', 'spouse', 'partner', 'relative'))
+        rel_type = choice(('friend', 'spouse', 'partner', 'relative'))
     # Randomly select a relationship start date between now and 50 years ago
-    start_date = fake.date_between(start_date='-50y', end_date='today')
+        start_date = fake.date_between(start_date='-50y', end_date='today')
     # Create tuple of data for the new relationship
-    new_relationship = (person1_id, person2_id, rel_type, start_date)
+        new_relationship = (person1_id, person2_id, rel_type, start_date)
     # Add the new relationship to the DB
-    cur.execute(populate_relationships_table(), new_relationship)
-    con.commit()
+        cur.execute(populate_relationships_table(), new_relationship)
+        con.commit()
     con.close()
 
 def get_script_dir():
