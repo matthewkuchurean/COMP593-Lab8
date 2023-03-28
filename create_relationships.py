@@ -1,16 +1,14 @@
 """
 Description:
  Creates the people table in the Social Network database
- and populates it with 200 fake people.
+ and populates it with 100 fake people.
 
 Usage:
  python create_db.py
 """
 import os
-import inspect
 import sqlite3
 from faker import Faker
-# from datetime import datetime
 from random import randint, choice
 
 db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'social_network.db')
